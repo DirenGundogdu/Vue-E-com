@@ -8,6 +8,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Slider from './components/Slider.vue'
 import Category from './components/Category.vue'
+import Product from './components/Product.vue'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
@@ -18,8 +19,9 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes : [
-    { path : '/' , component : Category   },
-    { path : '/hp' , component : Slider   }
+    { path : '/category' , component : Category   },
+    { path : '/slide' , component : Slider   },
+    { path : '/product' , component : Product   }
     //{ path : '/user' , components : User   }
 
 ],

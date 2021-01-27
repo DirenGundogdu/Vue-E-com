@@ -1,27 +1,19 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#">E-COM</b-navbar-brand>
+    <b-navbar-brand href="#" > <div class="font-weight-bold">  E-COM  </div> </b-navbar-brand>
     
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item href="#">
-          <div>
-  <b-dropdown id="dropdown-1" text="WOMEN" class="m-md-2" >
-    <b-dropdown-item>TOPS</b-dropdown-item>
-    <b-dropdown-divider></b-dropdown-divider>
-    <b-dropdown-item>BOTTOMS</b-dropdown-item>
-    <b-dropdown-divider></b-dropdown-divider> 
-  </b-dropdown>
+
+          <div v-for= "categor in category" :key= "categor.id" >
+  <b-dropdown id="dropdown-1" :text= "categor.name" class="m-md-2"></b-dropdown>
+
 </div></b-nav-item> <!--<router-link active-class="active" to="/path" exact tag="li">WOMEN</router-link>-->
           
-        <b-nav-item href="#"><b-dropdown id="dropdown-1" text="MEN" class="m-md-2">
-    <b-dropdown-item>TOPS</b-dropdown-item>
-    <b-dropdown-divider></b-dropdown-divider>
-    <b-dropdown-item>BOTTOMS</b-dropdown-item>
-    <b-dropdown-divider></b-dropdown-divider> 
-  </b-dropdown></b-nav-item>
+        
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -31,12 +23,7 @@
           <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
 
-        <b-nav-item-dropdown text="Lang" right>
-          <b-dropdown-item href="#">EN</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown>
+        
 
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
@@ -53,7 +40,23 @@
 </template>
 
 <script>
+
+import getdatasnavbar from './getdatasnavbar';
+
+
   export default {
+    data(){
+      return {
+          category : []
+        
+      }
+    },
+    created(){
+      getdatasnavbar.getdatanavbar().then((res)=>{
+        this.category  = res.data.children_data
+        
+      })
+    },
     
   }
 </script>

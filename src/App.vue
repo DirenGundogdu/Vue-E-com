@@ -1,15 +1,12 @@
 <template>
-  <div id="app">
-
-    
+  <div id="app">    
   <nvb/>
 
-  <wmnct/>
-
- 
  <router-view></router-view>
- 
-  <!--<sly/>
+ <!--
+   <prdct/> 
+ <wmnct/>
+  <sly/>
 
   <hmcrd/> -->
 
@@ -22,12 +19,15 @@
 <script>
 //import Carousel from './components/Carousel.vue'
 
-import getdatas from './components/getdatas.js';
+//import getdatas from './components/getdatas.js';
+
+//import getdatasnavbar from './getdatasnavbar';
 
 import Navbar from './components/Navbar.vue'
 
-import Category from './components/Category.vue'
+//import Category from './components/Category.vue'
 
+//import Product from './components/Product.vue'
 //import Homecard from './components/Homecard.vue'
 
 export default {
@@ -35,11 +35,14 @@ export default {
   components: {
     //sly : Carousel,
     nvb : Navbar,
-    wmnct : Category
+    //wmnct : Category
     //hmcrd : Homecard
+    //prdct : Product
   },
   created(){
-    getdatas.getdata()
+    //getdatasnavbar.getdatanavbar()
+   // getdatas.getdata(),
+    
   }
 }
 </script>

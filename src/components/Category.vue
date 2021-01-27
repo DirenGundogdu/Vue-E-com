@@ -4,16 +4,13 @@
     <div class="row">
         <div v-for="post in posts" :key="post.id" class="col-md-3">
              <b-card
-                title="Card Title" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2" >
-                <b-card-text>
-                    {{ post.name }}
+                :title = "post.name" :img-src= "`https://store.therelated.com/media/catalog/product/cache/84c53f0847035d2675c1d71de00956c9${post.custom_attributes[0].value}`" img-alt="Image" img-top tag="article" style="max-width: 20rem;" class="mb-2" >
+                <b-card-text> 
+                   
                 </b-card-text>
-                 <b-button href="#" variant="primary">Go somewhere</b-button>
+                 <b-button href="#" variant="primary"> Add to Cart ${{ post.price }} </b-button>
             </b-card>        
-        </div>
-
-
-        
+        </div>        
     </div>
 </div>
 </template>
@@ -25,6 +22,7 @@ export default {
 data(){
       return {
           posts : []
+          
         
       }
     },
@@ -32,6 +30,12 @@ data(){
       getdatas.getdata().then((res)=>{
         this.posts = res.data.items
       })
+    },
+    methods : {
+      
+        
+      
+
     }
 }
 </script>
@@ -39,5 +43,4 @@ data(){
 <style>
 
 </style>
-
 
