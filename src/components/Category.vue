@@ -19,6 +19,7 @@
 import getdatas from './getdatas';
 
 export default {
+  //props : [],
 data(){
       return {
           posts : []
@@ -27,15 +28,12 @@ data(){
       }
     },
     created(){
-      getdatas.getdata().then((res)=>{
+      console.log(this.$route.params.id)
+      getdatas.getdata(this.$route.params.id).then((res)=>{
         this.posts = res.data.items
-      })
-    },
-    methods : {
-      
         
-      
-
+        console.log(this.posts)
+      })
     }
 }
 </script>

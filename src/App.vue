@@ -17,13 +17,14 @@
 
 
 <script>
+
+import Navbar from './components/Navbar.vue'
+
 //import Carousel from './components/Carousel.vue'
 
 //import getdatas from './components/getdatas.js';
 
 //import getdatasnavbar from './getdatasnavbar';
-
-import Navbar from './components/Navbar.vue'
 
 //import Category from './components/Category.vue'
 

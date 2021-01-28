@@ -19,7 +19,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes : [
-    { path : '/category' , component : Category   },
+    { path : '/category/:id' ,name:"category", component : Category   },
     { path : '/slide' , component : Slider   },
     { path : '/product' , component : Product   }
     //{ path : '/user' , components : User   }

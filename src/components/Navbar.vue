@@ -1,18 +1,24 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info">
+  <b-navbar class="nvb"  toggleable="lg" type="dark" variant="info">
     <b-navbar-brand href="#" > <div class="font-weight-bold">  E-COM  </div> </b-navbar-brand>
     
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
+
+        <div v-for= "categor in category" :key= "categor.id" >
         <b-nav-item href="#">
-
-          <div v-for= "categor in category" :key= "categor.id" >
-  <b-dropdown id="dropdown-1" :text= "categor.name" class="m-md-2"></b-dropdown>
-
-</div></b-nav-item> <!--<router-link active-class="active" to="/path" exact tag="li">WOMEN</router-link>-->
           
+  <b-dropdown id="dropdown-1" :text= "categor.name" class="m-md-1" >
+      
+              <div v-for= "c in categor.children_data" :key= "c.name">
+                <router-link tag="button" class="btn" :to="{ name: 'category', params: { id: c.id } }" > {{c.name}} </router-link>
+              </div>
+         
+  </b-dropdown>
+ </b-nav-item> <!--<router-link active-class="active" to="/path" exact tag="li">WOMEN</router-link>-->
+</div>          
         
       </b-navbar-nav>
 
@@ -49,16 +55,37 @@ import getdatasnavbar from './getdatasnavbar';
       return {
           category : []
         
+        
       }
     },
     created(){
       getdatasnavbar.getdatanavbar().then((res)=>{
         this.category  = res.data.children_data
-        
+
       })
     },
+    methods : {
+      sendid(send)  {
+        //console.log(send)
+          //return getdatas.getdata(send)
+         //getdatas.getdata(send).then((res)=>{
+           //console.log(res.data)
+           this.$router.push({
+             name: "Category",params :{
+               id: send
+             }
+           })
+         
+      }
+    }
+    
     
   }
 </script>
 
+<style >
+.nvb{
+ margin-top: -60px !important; 
+}
 
+</style>
